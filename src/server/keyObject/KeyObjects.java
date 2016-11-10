@@ -1,6 +1,7 @@
 package server.keyObject;
 
 import client.keyObject.KeyObject;
+import commonObjects.Timeline;
 
 import java.net.Socket;
 import java.util.concurrent.ConcurrentHashMap;
@@ -12,7 +13,7 @@ public class KeyObjects {
 
     public static ConcurrentHashMap<Socket, KeyObjects>  keyMap = new ConcurrentHashMap<>();
     public String Name;
-
+    public Timeline timeStamp;
     public KeyObjects() {
     }
 

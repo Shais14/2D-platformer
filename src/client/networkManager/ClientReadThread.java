@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import static client.networkManager.CreateClient.ois;
@@ -31,6 +32,8 @@ public class ClientReadThread extends Thread implements Serializable {
                 if(Q!= null) {
                    Unpacker.unpack(Q);
                 }
+            } catch (SocketException ex){
+                System.exit(1);
             } catch (ClassNotFoundException | IOException e) {
                 e.printStackTrace();
             }

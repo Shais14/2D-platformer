@@ -2,6 +2,7 @@ package client;
 
 import client.keyObject.KeyObject;
 import client.networkManager.CreateClient;
+import commonObjects.Timeline;
 import processing.core.PApplet;
 
 import java.io.IOException;
@@ -11,13 +12,13 @@ import java.io.IOException;
  */
 public class Client {
 
+    public static Timeline clientTime;
 
     public static void main(String args[]) throws IOException {
 
+        clientTime = new Timeline(1, null);
+
         CreateClient gameClient = new CreateClient();
-        KeyObject l = new KeyObject("left");
-        KeyObject r = new KeyObject("right");
-        KeyObject u = new KeyObject("up");
         PApplet.main(new String[]{"client.render.ProcessingClient"});
     }
 

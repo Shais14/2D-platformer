@@ -1,6 +1,7 @@
 package server.physicsEngine;
 
 import processing.core.PApplet;
+import server.components.Components;
 import server.gameObject.GameObjects;
 
 import static server.packer.Packer.renderableObjects;
@@ -11,15 +12,10 @@ import static server.packer.Packer.renderableObjects;
 public class Gravity {
 
 
-    public static void checkGravity() {
+    public static void checkGravity(GameObjects ob) {
+        ob.components.stream().filter(c -> c.getComponentId().contains("Movable")).forEachOrdered(c -> {
+            ob.velocity.y += 3;
 
-
-        for (GameObjects obj : renderableObjects) {
-
-
-
-            obj.components.stream().filter(c -> c.getComponentId().contains("Movable")).forEachOrdered(c -> obj.velocity.y += 3);
-
-        }
+        });
     }
 }

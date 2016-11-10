@@ -4,6 +4,7 @@ import client.gameObject.GameObjects;
 import client.keyObject.KeyObject;
 import commonObjects.DataObjects;
 import commonObjects.KeyEventObjects;
+import commonObjects.eventManager.EventObjects;
 import processing.core.PApplet;
 
 /**
@@ -43,6 +44,15 @@ public class Helper {
 
         KeyEventObjects obj = new KeyEventObjects();
         obj.keyName = kObject.Name;
+        obj.timeStamp = kObject.timeStamp;
+        return  obj;
+    }
+
+
+    public static EventObjects key2EventObject(KeyEventObjects kObject) {
+
+        EventObjects obj = new EventObjects("KEY", kObject.timeStamp.getTime() ,kObject);
+
         return  obj;
     }
 

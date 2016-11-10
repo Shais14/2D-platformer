@@ -8,6 +8,7 @@ import java.io.Serializable;
 public class KeyEventObjects implements Serializable {
 
     public String keyName;
+    public Timeline timeStamp;
 
     public KeyEventObjects() {
     }

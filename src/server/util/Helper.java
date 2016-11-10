@@ -2,6 +2,7 @@ package server.util;
 
 import commonObjects.DataObjects;
 import commonObjects.KeyEventObjects;
+import commonObjects.eventManager.EventObjects;
 import processing.core.PApplet;
 import processing.core.PVector;
 import server.gameObject.GameObjects;
@@ -45,6 +46,8 @@ public class Helper {
 
         KeyObjects obj = new KeyObjects();
         obj.Name = kObject.keyName;
+        obj.timeStamp = kObject.timeStamp;
+        System.out.println("Helper.eventToKeyObject " + obj.Name);
         return  obj;
     }
 
@@ -61,5 +64,7 @@ public class Helper {
                 return Integer.parseInt(null);
         }
     }
+
+
 
 }

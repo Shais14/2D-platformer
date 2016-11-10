@@ -97,9 +97,6 @@ public class Packer {
             DataObjects dObj = gameToDataObject(obj);
             sendObj.add(dObj);
         }
-
         serverWriteThread.writeToClient(sendObj);
-
-
     }
 }

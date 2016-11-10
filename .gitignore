@@ -1,5 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
-.idea/
-img/
-out
+/.idea
+/img
+/out
 2D-platformer.iml

@@ -3,7 +3,9 @@ package client.networkManager;
 import client.keyObject.KeyObject;
 import client.keyObject.SendKeys;
 import client.networkManager.CreateClient;
+import commonObjects.DummyEventObject;
 import commonObjects.KeyEventObjects;
+import commonObjects.eventManager.EventObjects;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -46,8 +48,8 @@ public class ClientWriteThread extends Thread implements Runnable {
             }
         }
 
-    public static void writeToClient(ConcurrentLinkedQueue<KeyEventObjects> keList) throws IOException {
-        for (KeyEventObjects ke: keList) {
+    public static void writeToClient(ConcurrentLinkedQueue<EventObjects> keList) throws IOException {
+        for (EventObjects ke: keList) {
             ObjectOutputStream out = CreateClient.oos;
             out.writeObject(ke);
         }

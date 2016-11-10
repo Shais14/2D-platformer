@@ -12,9 +12,4 @@ public class Slidable extends Components {
     public String getComponentId() {
         return "Slidable";
     }
-
-
-
-
-
 }

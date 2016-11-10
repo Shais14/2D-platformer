@@ -3,7 +3,10 @@
     <words>
       <w>collidabl</w>
       <w>collidable</w>
+      <w>collidex</w>
+      <w>collidey</w>
       <w>deobjectify</w>
+      <w>gravityflag</w>
       <w>killable</w>
       <w>physickzer</w>
       <w>renderable</w>

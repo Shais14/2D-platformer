@@ -29,11 +29,12 @@ public class Position {
 
     private static void updateX(KeyObjects kObj, GameObjects gObj) {
 
+        System.out.println("kObj = [" + kObj.Name + "]");
+
         if (!kObj.Name.equals("up")) {
             gObj.velocity.x = Helper.keyToValue(kObj.Name);
         } else {
             if (gObj.velocity.y == 0) {
-
                 gObj.velocity.y = Helper.keyToValue(kObj.Name);
             }
         }

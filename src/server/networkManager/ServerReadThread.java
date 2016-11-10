@@ -1,15 +1,22 @@
 package server.networkManager;
 
 
+import commonObjects.DummyEventObject;
 import commonObjects.KeyEventObjects;
+import commonObjects.eventManager.EventObjects;
+import server.gameObject.GameObjects;
 import server.keyObject.KeyObjects;
+import server.physicsEngine.Slide;
 import server.util.Helper;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import static commonObjects.eventManager.EventManager.eventRaiser;
+import static commonObjects.eventManager.EventManager.eventRegister;
 import static server.networkManager.ServerStart.clientMap;
 import static server.networkManager.ServerStart.ois;
 
@@ -32,11 +39,16 @@ public class ServerReadThread extends Thread implements Runnable {
             try {
 
                 ObjectInputStream in = ois.get(clientSocket);
-                KeyEventObjects Q = (KeyEventObjects) in.readObject();
+                EventObjects Q = (EventObjects) in.readObject();
 
                 if (Q != null) {
-                    System.out.println(Q.keyName);
-                    KeyObjects.keyMap.putIfAbsent(clientSocket, Helper.eventToKeyObject(Q));
+                    System.out.println(Q.type);
+
+                    if(Objects.equals(Q.type, "KEY")) {
+                        EventObjects keyObject = new EventObjects(Q.type, Q.timestamp, Q.evtObject);
+                        keyObject.soc = clientSocket;
+                        eventRaiser(keyObject);
+                    }
                 }
 
             } catch (IOException | ClassNotFoundException e) {

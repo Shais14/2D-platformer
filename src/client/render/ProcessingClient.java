@@ -2,8 +2,10 @@ package client.render;
 
 import client.keyObject.KeyObject;
 import client.unpacker.Unpacker;
+import commonObjects.Timeline;
 import processing.core.PApplet;
 
+import static client.Client.clientTime;
 import static client.keyObject.KeyObject.addToKeyEvent;
 
 /**
@@ -13,12 +15,13 @@ public class ProcessingClient extends PApplet {
 
 
     private Unpacker unpacker;
-
+    Timeline gameTime;
     public void settings() {
         size(500, 500);
     }
 
     public void setup() {
+        gameTime = new Timeline(1, clientTime);
         unpacker = new Unpacker(this);
     }
 
@@ -29,15 +32,15 @@ public class ProcessingClient extends PApplet {
             switch (activeKey) {
                 case LEFT:
                     System.out.println("left");
-                    addToKeyEvent(new KeyObject("left"));
+                    addToKeyEvent(new KeyObject("left", gameTime));
                     break;
                 case RIGHT:
                     System.out.println("right");
-                    addToKeyEvent(new KeyObject("right"));
+                    addToKeyEvent(new KeyObject("right", gameTime));
                     break;
                 case UP:
                     System.out.println("up");
-                    addToKeyEvent(new KeyObject("up"));
+                    addToKeyEvent(new KeyObject("up", gameTime));
                     break;
                 default:
             }
